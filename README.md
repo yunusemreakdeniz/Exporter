@@ -189,8 +189,88 @@ result.Export(myStream);
 .ToPdf(opt =>
 {
     opt.Title = "Çalışan Raporu";
+    opt.Subtitle = "İnsan Kaynakları Departmanı";
+    opt.CompanyName = "Acme Corp";
+    opt.LogoPath = "logo.png";
+    opt.Theme = PdfThemes.Blue;           // Blue, Green, Red, Dark, Minimal
+    opt.PageOrientation = PageOrientation.Landscape;
+    opt.ShowCoverPage = true;
+    opt.ShowSummary = true;
+    opt.ZebraRows = true;
+    opt.Watermark = "GİZLİ";
+    opt.FooterNote = "Bu rapor şirket içi kullanım içindir.";
+    opt.FontSize = 9;
 })
 ```
+
+**Hazır Temalar:**
+
+| Tema | Açıklama |
+|------|----------|
+| `PdfThemes.Blue` | Kurumsal mavi (varsayılan) |
+| `PdfThemes.Green` | Doğa yeşili |
+| `PdfThemes.Red` | Kırmızı vurgu |
+| `PdfThemes.Dark` | Koyu tema |
+| `PdfThemes.Minimal` | Sade gri tonları |
+
+**PDF Özellikleri:**
+- Kapak sayfası (logo, başlık, alt başlık, tarih, kayıt sayısı)
+- Şirket başlığı (her sayfada)
+- Özet bilgi çubuğu
+- Zebra satırlar (alternatif arka plan rengi)
+- Watermark desteği
+- Otomatik hücre hizalama (sayısal: sağ, metin: sol)
+- Sayfa numarası ve oluşturma tarihi footer'ı
+- Özel footer notu
+
+### Fatura Şablonu
+
+`Exporter.Pdf` kütüphanesi hazır bir fatura şablon sistemi içerir:
+
+```csharp
+using Exporter.Pdf.Templates;
+
+var invoice = new InvoiceBuilder()
+    .Company(c => c
+        .Name("Acme Yazılım A.Ş.")
+        .Address("Levent, İstanbul")
+        .Phone("+90 212 555 00 00")
+        .Email("info@acme.com")
+        .TaxId("1234567890"))
+    .Customer(c => c
+        .Name("Beta Teknoloji Ltd.")
+        .Address("Çankaya, Ankara")
+        .Phone("+90 312 444 00 00")
+        .Email("info@beta.com")
+        .TaxId("0987654321"))
+    .Info(i => i
+        .InvoiceNumber("FTR-2026-001")
+        .Date(DateTime.Now)
+        .DueDate(DateTime.Now.AddDays(30)))
+    .AddItem("Yazılım Lisansı", 2, 15_000m)
+    .AddItem("Yıllık Destek", 1, 8_000m)
+    .AddItem("Eğitim Hizmeti", 3, 5_000m)
+    .Notes("30 gün içinde ödeme yapılması rica olunur.")
+    .BankInfo(b => b
+        .BankName("İş Bankası")
+        .Iban("TR00 0000 0000 0000 0000 0000 00")
+        .AccountHolder("Acme Yazılım A.Ş."))
+    .TaxRate(0.20m)
+    .Theme(PdfThemes.Blue)
+    .Build();
+
+byte[] pdfBytes = InvoiceRenderer.Render(invoice);
+File.WriteAllBytes("fatura.pdf", pdfBytes);
+```
+
+**Fatura Özellikleri:**
+- Şirket ve müşteri bilgileri
+- Fatura numarası, tarih, vade tarihi
+- Kalem tablosu (açıklama, miktar, birim fiyat, toplam)
+- Ara toplam, KDV ve genel toplam hesaplaması
+- Notlar bölümü
+- Banka bilgileri
+- Tema desteği (tüm PDF temaları kullanılabilir)
 
 #### JSON
 
@@ -206,16 +286,31 @@ result.Export(myStream);
 ```
 Exporter/
 ├── src/
-│   ├── Exporter.Core/       Core kütüphane (modeller, builder, validasyon)
-│   ├── Exporter.Excel/      Excel provider (ClosedXML)
-│   ├── Exporter.Csv/        CSV provider
-│   ├── Exporter.Pdf/        PDF provider (QuestPDF)
-│   └── Exporter.Json/       JSON provider (System.Text.Json)
+│   ├── Exporter.Core/          Core kütüphane (modeller, builder, validasyon)
+│   ├── Exporter.Excel/         Excel provider (ClosedXML)
+│   ├── Exporter.Csv/           CSV provider
+│   ├── Exporter.Pdf/           PDF provider (QuestPDF)
+│   │   └── Templates/          Fatura şablon sistemi
+│   └── Exporter.Json/          JSON provider (System.Text.Json)
 ├── tests/
-│   └── Exporter.Tests/      Unit testler (47 test)
-└── samples/
-    └── Exporter.Sample/     Örnek konsol uygulaması
+│   └── Exporter.Tests/         Unit testler (47 test)
+├── samples/
+│   └── Exporter.Sample/        Örnek konsol uygulaması
+├── packages/                   NuGet paketleri (.nupkg)
+└── output/                     Örnek çıktı dosyaları
 ```
+
+## NuGet Paketleri
+
+Hazır paketler `packages/` klasöründe bulunmaktadır:
+
+| Paket | Açıklama |
+|-------|----------|
+| `Exporter.Core.1.0.0.nupkg` | Core kütüphane |
+| `Exporter.Excel.1.0.0.nupkg` | Excel export (ClosedXML) |
+| `Exporter.Csv.1.0.0.nupkg` | CSV export |
+| `Exporter.Pdf.1.0.0.nupkg` | PDF export (QuestPDF) + Fatura şablonu |
+| `Exporter.Json.1.0.0.nupkg` | JSON export |
 
 ## Özel Provider Yazma
 
