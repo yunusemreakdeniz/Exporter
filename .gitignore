@@ -19,7 +19,7 @@ obj/
 # packages/ and *.nupkg tracked for distribution
 
 ## Output
-output/
+# output/ tracked for samples
 
 ## OS
 Thumbs.db

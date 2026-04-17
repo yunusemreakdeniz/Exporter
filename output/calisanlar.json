@@ -1,0 +1,51 @@
+[
+  {
+    "ad": "Ahmet Y\u0131lmaz",
+    "departman": "Yaz\u0131l\u0131m",
+    "email": "ahmet@firma.com",
+    "maas": 32000,
+    "aktif": true
+  },
+  {
+    "ad": "Ay\u015Fe Demir",
+    "departman": "Pazarlama",
+    "email": "ayse@firma.com",
+    "maas": 28000,
+    "aktif": true
+  },
+  {
+    "ad": "Mehmet Kaya",
+    "departman": "Yaz\u0131l\u0131m",
+    "email": "mehmet@firma.com",
+    "maas": 35000,
+    "aktif": false
+  },
+  {
+    "ad": "Fatma \u00C7elik",
+    "departman": "\u0130K",
+    "email": "fatma@firma.com",
+    "maas": 26000,
+    "aktif": true
+  },
+  {
+    "ad": "Ali \u00D6zt\u00FCrk",
+    "departman": "Finans",
+    "email": "ali@firma.com",
+    "maas": 30000,
+    "aktif": true
+  },
+  {
+    "ad": "Zeynep Arslan",
+    "departman": "Yaz\u0131l\u0131m",
+    "email": "zeynep@firma.com",
+    "maas": 33000,
+    "aktif": true
+  },
+  {
+    "ad": "Emre Y\u0131ld\u0131z",
+    "departman": "Pazarlama",
+    "email": "",
+    "maas": 24000,
+    "aktif": false
+  }
+]
