@@ -15,9 +15,8 @@ obj/
 *.swp
 *~
 
-## NuGet
-packages/
-*.nupkg
+## NuGet (restore cache)
+# packages/ and *.nupkg tracked for distribution
 
 ## Output
 output/
