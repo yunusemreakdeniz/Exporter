@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <PackageId>Exporter.Pdf</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>yunusemreakdeniz</Authors>
+    <Description>PDF export provider for Exporter library. Uses QuestPDF with professional themes, cover pages, watermarks, zebra rows, invoice templates and more.</Description>
+    <PackageTags>export;pdf;questpdf;invoice;fluent-api;themes</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/yunusemreakdeniz/Exporter</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Exporter.Core\Exporter.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="QuestPDF" Version="2026.2.4" />
+  </ItemGroup>
+
+</Project>

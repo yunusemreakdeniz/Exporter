@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <PackageId>Exporter.Excel</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>yunusemreakdeniz</Authors>
+    <Description>Excel export provider for Exporter library. Uses ClosedXML for .xlsx generation with styling, multi-sheet, auto-filter support.</Description>
+    <PackageTags>export;excel;xlsx;closedxml;fluent-api</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/yunusemreakdeniz/Exporter</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Exporter.Core\Exporter.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.105.0" />
+  </ItemGroup>
+
+</Project>

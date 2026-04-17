@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <PackageId>Exporter.Core</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>yunusemreakdeniz</Authors>
+    <Description>Lambda expression based fluent API export library for .NET. Core abstractions, builders, models and validation engine.</Description>
+    <PackageTags>export;excel;csv;pdf;json;fluent-api;lambda</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/yunusemreakdeniz/Exporter</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Exporter.Tests" />
+  </ItemGroup>
+
+</Project>

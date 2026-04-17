@@ -1,0 +1,27 @@
+## .NET
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.user
+*.suo
+*.cache
+*.log
+
+## IDE
+.vs/
+.vscode/
+*.swp
+*~
+
+## NuGet
+packages/
+*.nupkg
+
+## Output
+output/
+
+## OS
+Thumbs.db
+.DS_Store
